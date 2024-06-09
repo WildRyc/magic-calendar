@@ -1,16 +1,20 @@
 using System.ComponentModel.DataAnnotations;
+using MagicCalendar.Models;
 
 namespace MagicCalendar.Models
 {
     public class Event
     {
-        public int ID { get; set; }
+        [Key]
+        public int EventID { get; set; }
         
+        #nullable disable
         [Required]
-        public MagicCalendar.Models.Organizer Organizer { get; set; }
+        public Organizer Organizer { get; set; }
 
+        #nullable disable
         [Required]
-        public MagicCalendar.Models.Format Format { get; set; }
+        public Format Format { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

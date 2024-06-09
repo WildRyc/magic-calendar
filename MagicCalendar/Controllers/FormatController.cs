@@ -34,7 +34,7 @@ namespace MagicCalendar.Controllers
             }
 
             var format = await _context.Format
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.FormatID == id);
             if (format == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace MagicCalendar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Name,NumberOfPlayersPerTeam,IsTeamBased")] Format format)
         {
-            if (id != format.ID)
+            if (id != format.FormatID)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace MagicCalendar.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FormatExists(format.ID))
+                    if (!FormatExists(format.FormatID))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace MagicCalendar.Controllers
             }
 
             var format = await _context.Format
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.FormatID == id);
             if (format == null)
             {
                 return NotFound();
@@ -151,7 +151,7 @@ namespace MagicCalendar.Controllers
 
         private bool FormatExists(int id)
         {
-            return _context.Format.Any(e => e.ID == id);
+            return _context.Format.Any(e => e.FormatID == id);
         }
     }
 }

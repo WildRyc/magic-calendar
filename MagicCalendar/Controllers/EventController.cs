@@ -34,7 +34,7 @@ namespace MagicCalendar.Controllers
             }
 
             var @event = await _context.Event
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.EventID == id);
             if (@event == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace MagicCalendar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Date,Price")] Event @event)
         {
-            if (id != @event.ID)
+            if (id != @event.EventID)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace MagicCalendar.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EventExists(@event.ID))
+                    if (!EventExists(@event.EventID))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace MagicCalendar.Controllers
             }
 
             var @event = await _context.Event
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.EventID == id);
             if (@event == null)
             {
                 return NotFound();
@@ -151,7 +151,7 @@ namespace MagicCalendar.Controllers
 
         private bool EventExists(int id)
         {
-            return _context.Event.Any(e => e.ID == id);
+            return _context.Event.Any(e => e.EventID == id);
         }
     }
 }

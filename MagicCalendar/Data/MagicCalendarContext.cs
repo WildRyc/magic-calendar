@@ -18,5 +18,6 @@ namespace MagicCalendar.Data
         public DbSet<MagicCalendar.Models.Format> Format { get; set; } = default!;
         public DbSet<MagicCalendar.Models.Organizer> Organizer { get; set; } = default!;
         public DbSet<MagicCalendar.Models.Event> Event { get; set; } = default!;
+        public DbSet<MagicCalendar.Models.EventSoftware> EventSoftware { get; set; } = default!;
             }
 }

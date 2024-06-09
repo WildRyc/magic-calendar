@@ -1,11 +1,14 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace MagicCalendar.Models
 {
     public class Game
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        [Key]
+        public int GameID { get; set; }
+        [DisplayName("Game Name")]
+        public string GameName { get; set; }
         public string Publisher { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-@model MagicCalendar.Models.Format
+@model MagicCalendar.Models.EventSoftware
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>Format</h4>
+<h4>EventSoftware</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,9 +18,9 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumberOfPlayersPerTeam" class="control-label"></label>
-                <input asp-for="NumberOfPlayersPerTeam" class="form-control" />
-                <span asp-validation-for="NumberOfPlayersPerTeam" class="text-danger"></span>
+                <label asp-for="URL" class="control-label"></label>
+                <input asp-for="URL" class="form-control" />
+                <span asp-validation-for="URL" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

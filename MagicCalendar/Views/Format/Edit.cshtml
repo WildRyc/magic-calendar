@@ -12,7 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="FormatID" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -22,11 +22,6 @@
                 <label asp-for="NumberOfPlayersPerTeam" class="control-label"></label>
                 <input asp-for="NumberOfPlayersPerTeam" class="form-control" />
                 <span asp-validation-for="NumberOfPlayersPerTeam" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsTeamBased" /> @Html.DisplayNameFor(model => model.IsTeamBased)
-                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -1,14 +1,20 @@
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
 namespace MagicCalendar.Models
 {
     public class Format
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-
-        public Game Game { get; set; }
+        [Key]
+        public int FormatID { get; set; }
         
-        public int? NumberOfPlayersPerTeam { get; set; } 
+        [Required]
+        public string Name { get; set; }
+        
+        [Required]
+        public Game Game { get; set; }
 
-        public Boolean IsTeamBased { get; set; }
+        [DisplayName("Number of Players Per Team")]
+        public int? NumberOfPlayersPerTeam { get; set; } 
     }
 }

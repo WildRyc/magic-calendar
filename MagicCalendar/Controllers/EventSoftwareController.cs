@@ -10,22 +10,22 @@ using MagicCalendar.Models;
 
 namespace MagicCalendar.Controllers
 {
-    public class GameController : Controller
+    public class EventSoftwareController : Controller
     {
         private readonly MagicCalendarContext _context;
 
-        public GameController(MagicCalendarContext context)
+        public EventSoftwareController(MagicCalendarContext context)
         {
             _context = context;
         }
 
-        // GET: Game
+        // GET: EventSoftware
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Game.ToListAsync());
+            return View(await _context.EventSoftware.ToListAsync());
         }
 
-        // GET: Game/Details/5
+        // GET: EventSoftware/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace MagicCalendar.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Game
-                .FirstOrDefaultAsync(m => m.GameID == id);
-            if (game == null)
+            var eventSoftware = await _context.EventSoftware
+                .FirstOrDefaultAsync(m => m.EventSoftwareID == id);
+            if (eventSoftware == null)
             {
                 return NotFound();
             }
 
-            return View(game);
+            return View(eventSoftware);
         }
 
-        // GET: Game/Create
+        // GET: EventSoftware/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Game/Create
+        // POST: EventSoftware/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Publisher")] Game game)
+        public async Task<IActionResult> Create([Bind("EventSoftwareID,Name,URL")] EventSoftware eventSoftware)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(game);
+                _context.Add(eventSoftware);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View(eventSoftware);
         }
 
-        // GET: Game/Edit/5
+        // GET: EventSoftware/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace MagicCalendar.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Game.FindAsync(id);
-            if (game == null)
+            var eventSoftware = await _context.EventSoftware.FindAsync(id);
+            if (eventSoftware == null)
             {
                 return NotFound();
             }
-            return View(game);
+            return View(eventSoftware);
         }
 
-        // POST: Game/Edit/5
+        // POST: EventSoftware/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Publisher")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("EventSoftwareID,Name,URL")] EventSoftware eventSoftware)
         {
-            if (id != game.GameID)
+            if (id != eventSoftware.EventSoftwareID)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace MagicCalendar.Controllers
             {
                 try
                 {
-                    _context.Update(game);
+                    _context.Update(eventSoftware);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GameExists(game.GameID))
+                    if (!EventSoftwareExists(eventSoftware.EventSoftwareID))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace MagicCalendar.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View(eventSoftware);
         }
 
-        // GET: Game/Delete/5
+        // GET: EventSoftware/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +124,34 @@ namespace MagicCalendar.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Game
-                .FirstOrDefaultAsync(m => m.GameID == id);
-            if (game == null)
+            var eventSoftware = await _context.EventSoftware
+                .FirstOrDefaultAsync(m => m.EventSoftwareID == id);
+            if (eventSoftware == null)
             {
                 return NotFound();
             }
 
-            return View(game);
+            return View(eventSoftware);
         }
 
-        // POST: Game/Delete/5
+        // POST: EventSoftware/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var game = await _context.Game.FindAsync(id);
-            if (game != null)
+            var eventSoftware = await _context.EventSoftware.FindAsync(id);
+            if (eventSoftware != null)
             {
-                _context.Game.Remove(game);
+                _context.EventSoftware.Remove(eventSoftware);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GameExists(int id)
+        private bool EventSoftwareExists(int id)
         {
-            return _context.Game.Any(e => e.GameID == id);
+            return _context.EventSoftware.Any(e => e.EventSoftwareID == id);
         }
     }
 }
